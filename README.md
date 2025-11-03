@@ -1,141 +1,138 @@
-# Programming Fundamentals I - Fall 2025
+# Programming Fundamentals I — Lab 11
 
-## Lab Assignment #10: Compound Interest Calculator
+## Method Overloading and More Dice Rolls
 
-*Due at 11:59 pm the night before the next lab session*
+Due date: 11:59 p.m. the night before the next lab meeting
 
 ---
 
 ## Purpose
 
-A real estate agent wants to develop an application to calculate the value of purchased homes over time. The application will compute the compound interest of a house given a principal amount (initial cost), interest rate, and number of years after the purchase. This lab focuses on the following concepts:
+To expand on our dice rolling simulation, we’ll consider cases where the amount and kinds of dice depend on inputs to the program. Imagine an application with an interface that lets a user specify how many dice to roll and the type of dice (D6, D20, etc.). This program emphasizes the following concept:
 
-• Implementing void methods
-
-• Implementing value-returning methods
+• Overloading methods
 
 ---
 
-## In-Class 10 Lesson
+## In‑Class 11
 
-To get started, let's consider another program using multiple custom methods. Refactor (rewrite) the tipping application from **Lab 4** so that the main method makes requests for user input while two other methods outside of main handle:
+Let’s practice a simple case of method overloading. Prepare a program that includes two versions of an `add` method: one that performs mathematical addition, and one that performs String concatenation.
 
-• Calculating the final cost of a meal (including tax and tip)
+- The first `add` method takes two doubles as arguments and returns a double equal to the sum of the two parameters.
+- The second `add` method takes two Strings as arguments and returns a String that concatenates the first parameter with a space and then the second parameter.
 
-• Printing the output to the program with proper formatting
+After implementing these two methods, test both in `main` by printing sample outputs. For example:
+
+```
+Adding 250 and 500 gives: 750.0
+Combining words ‘Hello’ and ‘world’ gives: Hello world
+```
 
 ---
 
-## Lab 10 Task
+## Lab 11 Task: MoreDiceRolls
 
-Create a project called `CompoundInterest_FirstName_LastName` or `Lab10_FirstName_LastName`. Remember to include comments describing your program. A key component of this lab should be comments describing the methods used.
+Create a project called `MoreDiceRolls_FirstName_LastName` or `Lab11_FirstName_LastName`. Remember to include comments summarizing the program.
 
-The steps provided are broken down into a bottom-up implementation. Methods implemented in earlier steps will be used in later steps.
+The steps below follow a bottom‑up implementation. Methods implemented earlier will be used later. Make sure the three custom methods you implement all have the same name (i.e., you are overloading the method). You may use either `java.util.Random` or `Math.random()`.
 
-### Step 1: Implement the Compound Interest Calculation Method
+### Step 1 — Roll a single six‑sided die
 
-Implement a method that will handle the calculation of the compound interest. This method will take a double for the principal amount, a double for the interest rate, and an int for the number of years. This method will return a double for the final amount. Use the following formula to calculate compound interest:
+- Implement a method that rolls one six‑sided die.
+- Parameters: none
+- Returns: `int` result in the range 1–6 (inclusive)
 
-**A = P(1 + r)^t**
+### Step 2 — Roll a single die with any number of sides
 
-Where:
-- **P** is the principal amount
-- **r** is the interest rate
-- **t** is the number of years
-- **A** is the final amount
+- Implement a method that rolls one die with any number of sides.
+- Parameters: one `int` specifying the number of sides
+- Returns: `int` result in the range 1–numberOfSides (inclusive)
 
-*Be careful about the order of operations in this formula.*
+### Step 3 — Roll two dice and sum them
 
-### Step 2: Implement the Output Formatting Method
+- Implement a method that rolls two dice, each of which may have any number of sides.
+- Parameters: two `int` values specifying the number of sides for each die
+- Returns: `int` equal to the sum of the two results
 
-Implement a method that will handle printing the output to the console with proper formatting. This method will take a double for the principal amount, a double for the interest rate, an int for the number of years, and a double for the final amount. This method will not return anything. 
+### Step 4 — Use the methods in main
 
-**Formatting requirements:**
-- The principal amount and final amount must be formatted to two decimal places
-- The interest rate must be formatted to three decimal places
+In your `main` method:
 
-### Step 3: Implement the Main Method
-
-In the main method, do the following:
-
-• Construct an object of the Scanner class to handle user input
-
-• Declare variables for the principal amount, interest rate, number of years, and final amount. The data types should match what is expected for the other methods in this program
-
-• Make requests to the user to enter the principal amount, interest rate, and number of years. The interest rate will be requested as a percent, so make sure this is converted to a decimal before performing any calculations
-
-• Call the method implemented in Step 1 to calculate the final amount
-
-• Call the method implemented in Step 2 to print the output to the console
+1. Print the result of calling each of the three methods. For the second and third calls, use `(20)` and `(6, 6)`, respectively.
+2. After the three print statements, declare an `int` variable to count how many times you roll snake eyes (two 1s) when using two six‑sided dice.
+3. Create a loop to perform 10,000 rolls using the third method. Increment the snake‑eyes counter whenever the result is 2.
+4. After the rolls, print the probability of rolling snake eyes.
 
 ---
 
 ## Example Output
 
+Your exact results will vary because rolls are random. Example flow:
+
 ```
-Please enter the principal amount: 137000
-Please enter the interest rate (as a percent): 2.175
-Please enter the number of elapsed years: 15
-
-Given a principal amount of $137000.00, an interest rate of  2.1750% and 15 years, the final amount is $189186.55.
+The result of rolling a single six-sided die is 4
+The result of rolling a single twenty-sided die is 8
+The result of rolling two six-sided dice is 6
+The probability of rolling snake eyes is 2.84%.
 ```
 
 ---
 
-## Running Your Program
+## Grading Criteria (100 points)
 
-### Method 1: Using the Terminal
-1. Open the terminal in your codespace (Terminal → New Terminal)
-2. Compile your program:
-   ```bash
-   javac Lab10_YourFirstName_YourLastName.java
-   ```
-3. Run your program:
-   ```bash
-   java Lab10_YourFirstName_YourLastName
-   ```
+Make sure you have the following in your program:
 
-Replace `Lab10_YourFirstName_YourLastName.java` with your actual file name. If you are running the in-class exercise, use the corresponding file name instead.
+• Comments describing this program — 5 points
 
-💡 **Remember:** After running your program, take a screenshot of your console output and add it to your file directory on the left as part of your submission.
+• Properly implementing the first custom method — 9 points
+   - Method header — 3 points
+   - Method body — 6 points
 
----
+• Properly implementing the second custom method — 16 points
+   - Method header — 6 points
+   - Method body — 10 points
 
-## Grading Criteria
+• Properly implementing the third custom method — 30 points
+   - Method header — 8 points
+   - Method body — 22 points
 
-This lab is worth 100 points total, distributed as follows:
-
-• Comments describing the program: 5 points
-
-• The method to handle calculations: 35 points
-
-• The method to handle the properly formatted output: 35 points
-
-• The main method: 25 points
-  - Scanner and other variable declarations: 5 points
-  - Requests to the user: 10 points
-  - Calls to the other two methods: 10 points 
+• Properly implementing the main method — 40 points
+   - First three print statements — 9 points
+   - Variable declaration and loop — 25 points
+   - Last print statement — 6 points
 
 ---
 
-## Commit Your Changes
+## How to Run
 
-### Step 1: Use VS Code's Source Control panel
-   - Click the Source Control icon in the left sidebar
-   - Type a commit message describing your changes
-   - Click "Commit" then "Sync Changes" to push your code
+From a terminal in VS Code (macOS, zsh):
 
-### Step 2: Verify Submission
-After pushing your changes, visit your assignment repository on GitHub Classroom. Confirm that your latest code and commit message appear, and that your files are named correctly. 
+```bash
+# Compile (replace with your actual file name):
+javac Lab11_FirstName_LastName.java
 
-### Step 3: Submit to Blackboard Assignment
-Once you have verified your submission on GitHub Classroom, copy the URL of your assignment repository and submit this GitHub repository link to Blackboard as confirmation that you are DONE.
+# Or if you used the alternate name:
+javac MoreDiceRolls_FirstName_LastName.java
+
+# Run (match the class name you compiled):
+java Lab11_FirstName_LastName
+# or
+java MoreDiceRolls_FirstName_LastName
+```
 
 ---
 
+## Screenshots
 
+Please upload at least one screenshot of your console output. You can use the example outputs to show the correct corresponding behavior or use your own input/rolls.
 
-**Excellent work!** You've reached Lab 10, and this assignment introduces you to implementing custom methods in Java. Working with value-returning methods and void methods will help you understand how to modularize your code and create reusable components. This compound interest calculator demonstrates a practical application of methods in a real-world scenario, helping you understand how to break down complex problems into smaller, manageable functions. Remember to include detailed comments describing what each method does!
+---
 
-**Important:** Focus on completing the lab assignment. Do NOT edit or tamper with any test files, markdown files, or class files if they appear in your repository.
+## Submitting Your Work
+
+1. Commit and push your changes using Source Control panel.
+2. Verify on GitHub that your latest commit is present and your filenames follow the required convention.
+3. Submit your repository URL to Blackboard to complete the assignment.
+
+Good luck, and have fun rolling! 🎲
 
